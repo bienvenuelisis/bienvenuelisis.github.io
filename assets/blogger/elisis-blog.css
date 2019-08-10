@@ -3,7 +3,7 @@ p {
     font-weight:400;
     letter-spacing: 3px;
     word-spacing: 2px;
-    text-align: left;
+    text-align: justify;
     white-space: initial;
     word-break: initial;
     line-break: initial;
@@ -16,7 +16,6 @@ p {
     margin-bottom: 20px;
     font-size: 18px;
     line-height: 27px;
-    padding: 3em;
     font-family: 'Frank Ruhl Libre', serif;
 }
 

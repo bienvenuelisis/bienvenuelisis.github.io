@@ -175,7 +175,7 @@ body:not(.woocommerce-page):not(.page-template-page-search-results) table th {
 }
 
 body:not(.woocommerce-page):not(.page-template-page-search-results) table th {
-    text-align: left;
+    text-align: center;
     background: #333334;
     color: #fff
 }
