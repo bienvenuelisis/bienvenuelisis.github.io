@@ -1,3 +1,51 @@
 p {
     font-size: 16px;
+    font-style: normal;
+    font-weight:400;
+    letter-spacing: 3px;
+    word-spacing: 2px;
+    line-height: 1.5em;
+    text-align: left;
+    padding: 5px 4px;
+    text-indent: 1px;
+    white-space: initial;
+    word-break: initial;
+    line-break: initial;
+    text-align-last: initial;
+    text-orientation: initial;
+    word-wrap: initial;
+    writing-mode:initial;
+    background-color: white;
+    text-indent: 25px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 27px;
+    padding: 3em;
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+@font-face {
+    font-family: Rubik;
+    src:
+            url(https://css-tricks.com/wp-content/themes/CSS-Tricks-17/fonts/Rubik-Bold-kern-latin.woff2) format("woff2"),
+            url(https://css-tricks.com/wp-content/themes/CSS-Tricks-17/fonts/Rubik-Bold-kern-latin.woff) format("woff");
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: Rubik;
+    src:
+            url(https://css-tricks.com/wp-content/themes/CSS-Tricks-17/fonts/Rubik-Regular-kern-latin.woff2) format("woff2"),
+            url(https://css-tricks.com/wp-content/themes/CSS-Tricks-17/fonts/Rubik-Regular-kern-latin.woff) format("woff");
+    font-weight: 400;
+    font-display: swap;
+}
+
+
+.bold {
+    font-weight: bold;
+}
+
+.lighter {
+    font-weight: lighter;
 }
