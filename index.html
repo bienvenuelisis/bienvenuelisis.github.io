@@ -1112,6 +1112,11 @@
                 <!-- form -->
                 <form data-toggle="validator" data-focus="false" method="POST" action="https://formspree.io/f/mleadpkl"
                     id="contactForm" name="contactForm">
+
+                    <div class="form-message">
+                        <p style="color: red;" id="error-message"></p>
+                    </div>
+
                     <fieldset>
 
                         <div class="form-field">
@@ -1282,9 +1287,22 @@
     </script>
     <script>
         var form = document.getElementById("contactForm");
+        var errorMessage = document.getElementById("error-message");
+
+        function fieldIsEmpty(id) {
+            return document.getElementById(id).value.length === 0;
+        }
 
         async function handleSubmit(event) {
             event.preventDefault();
+
+            if ((fieldIsEmpty("name")) || (fieldIsEmpty("email")) || (fieldIsEmpty("message"))) {
+                errorMessage.innerHTML = "All fields are required.";
+                return;
+            } else {
+                errorMessage.innerHTML = "";
+            }
+
             var status = document.getElementById("my-form-status");
             var data = new FormData(event.target);
             fetch(event.target.action, {

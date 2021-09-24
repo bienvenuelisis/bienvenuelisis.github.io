@@ -1126,6 +1126,11 @@
                 <!-- form -->
                 <form data-toggle="validator" data-focus="false" method="POST" action="https://formspree.io/f/mleadpkl"
                     id="contactForm" name="contactForm">
+
+                    <div class="form-message">
+                        <p style="color: red;" id="error-message"></p>
+                    </div>
+
                     <fieldset>
 
                         <div class="form-field">
@@ -1257,7 +1262,79 @@
     <script src="cv/js/jquery-2.1.3.min.js"></script>
     <script src="cv/js/plugins.js"></script>
     <script src="cv/js/main.js"></script>
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+    <script>
+        /* paste this line in verbatim */
+        window.formbutton = window.formbutton || function () {
+            (formbutton.q = formbutton.q || []).push(arguments)
+        };
 
+        /* customize formbutton below*/
+        formbutton("create", {
+            action: "https://formspree.io/f/mleadpkl",
+            title: "Message Direct",
+            fields: [
+                {
+                    type: "email",
+                    label: "Email:",
+                    name: "email",
+                    required: true,
+                    placeholder: "your@email.com"
+                },
+                {
+                    type: "textarea",
+                    label: "Message:",
+                    name: "message",
+                    placeholder: "En quoi pouvons nous vous aider ?",
+                },
+                { type: "submit" }
+            ],
+            styles: {
+                title: {
+                    backgroundColor: "teal"
+                },
+                button: {
+                    backgroundColor: "teal"
+                }
+            }
+        });
+    </script>
+    <script>
+        var form = document.getElementById("contactForm");
+        var errorMessage = document.getElementById("error-message");
+
+        function fieldIsEmpty(id) {
+            return document.getElementById(id).value.length === 0;
+        }
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+
+            if ((fieldIsEmpty("name")) || (fieldIsEmpty("email")) || (fieldIsEmpty("message"))) {
+                errorMessage.innerHTML = "Tous les champs sont requis.";
+                return;
+            } else {
+                errorMessage.innerHTML = "";
+            }
+
+            var status = document.getElementById("my-form-status");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                status.innerHTML = "Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.";
+                form.reset()
+            }).catch(error => {
+                status.innerHTML = "Oups! Une erreur s'est produite lors de l'envoi de votre message. <br> Réessayez plus tard."
+            });
+        }
+
+        form.addEventListener("submit", handleSubmit)
+    </script>
 </body>
 
 </html>
